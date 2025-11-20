@@ -41,14 +41,18 @@ class Customer:
 
     def print_check(self) -> None:
         self.location = self.cheaper_shop.location
-        print(f"Date: {datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")}")
+
+        time_now = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+        print(f"Date: {time_now}")
         print(f"Thanks, {self.name}, for your purchase!")
         print("You have bought:")
+
         for product in self.product_cart:
             cost_of_product = (self.cheaper_shop.products[product]
                                * self.product_cart[product])
             if cost_of_product == int(cost_of_product):
                 cost_of_product = int(cost_of_product)
+
             print(f"{self.product_cart[product]}"
                   f" {product}s for"
                   f" {round(cost_of_product, 2)}"
