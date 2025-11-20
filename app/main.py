@@ -14,7 +14,7 @@ def shop_trip() -> None:
 
             cost = round(cost, 2)
             print(f"{customer.name}'s trip to the"
-                  f" {shop.name} costs {cost}")
+                  f" {shop.name} costs {round(cost, 2)}")
 
         if customer.cost_to_shop > customer.money:
             print(f"{customer.name} doesn't have enough money"
@@ -22,8 +22,12 @@ def shop_trip() -> None:
         else:
             print(f"{customer.name} rides to"
                   f" {customer.cheaper_shop.name}\n")
+
+            home_coord = customer.location.copy()
             customer.print_check()
             print(f"{customer.name} rides home")
+            customer.location = home_coord
+
             customer.money -= customer.cost_to_shop
             print(f"{customer.name} now has"
                   f" {round(customer.money, 2)} dollars\n")

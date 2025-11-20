@@ -7,10 +7,10 @@ class Car:
         self.fuel_consumption = fuel_consumption
 
     def cost_way(self,
-                 start_curd: list[int, int],
-                 target_curd: list[int, int],
+                 start_coord: list[int, int],
+                 target_coord: list[int, int],
                  fuel_price: int | float) -> int | float:
-        catenary_1 = start_curd[0] - target_curd[0]
-        catenary_2 = start_curd[1] - target_curd[1]
-        distance = math.sqrt((catenary_1 ** 2) + (catenary_2 ** 2))
+        delta_x = start_coord[0] - target_coord[0]
+        delta_y = start_coord[1] - target_coord[1]
+        distance = math.sqrt((delta_x ** 2) + (delta_y ** 2))
         return self.fuel_consumption * distance / 100 * fuel_price
